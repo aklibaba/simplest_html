@@ -1,0 +1,67 @@
+@import "bootstrap";
+
+body {
+    
+}
+
+.check-height {
+    height: 3000px;
+    position: static;
+    //float: left;
+    background-color: #676;
+}
+
+
+.spacer {
+    height: 600px;
+    //use float instead of pos abs to keep height for the window
+    //thanks to this we can make use of clear both,
+    float: left;
+    
+}
+
+.block {
+    
+}
+
+@for $i from 1 through 4 {
+    .block#{$i} {
+        height: 600px;
+        //give position of relative (make it positioned)
+        //so that block below is in the same
+        //stacking context as the fixed div above it, so that
+        //it will be stacked on top of it, not behind it
+        position: relative;
+        //float all the elements to the left so that they are on the same
+        //layer as the spacer elements, which are also floated
+        //thanks to this when the block above becomes fixed, and no longer
+        //supports any height, the block below will not bubble up to the top of the document
+        //because it will be supported by the floated spcaer,
+        //if the block below was not floated, it would ignore
+        //the floated spacer above, as it is taken out of document flow
+        //float: left;
+    }
+}
+
+.block1 {
+    background-color: indianred;
+}
+
+.block2 {
+    background-color: #00b3ee;
+}
+
+.block3 {
+    background-color: #4cae4c;
+}
+
+.block4 {
+    background-color: #204d74;
+}
+
+.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
